@@ -1,0 +1,33 @@
+{
+  "name": "farshidrezaei/vandar-responder",
+  "description": "Vandar Responder Laravel Packagee",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+      "php": "^7.4|^8.0"
+  },
+  "authors": [
+    {
+      "name": "Farshid Rezaei",
+      "email": "farshid.net1@yahoo.com",
+      "homepage": "https://farshidrezaei.ir",
+      "role": "Full-Stack Web Developer"
+    }
+  ],
+  "extra": {
+    "laravel": {
+        "providers": [
+            "FarshidRezaei\\VandarResponder\\Providers\\ResponderServiceProvider"
+        ]
+    }
+},
+  "autoload": {
+    "files": [
+      "src/Helpers/helpers.php"
+    ],
+    "psr-4": {
+      "FarshidRezaei\\VandarResponder\\": "src/"
+    }
+  },
+  "minimum-stability": "dev"
+}
