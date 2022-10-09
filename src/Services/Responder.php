@@ -16,7 +16,7 @@ class Responder
      */
     public static function success(
         ?string $message = null,
-        mixed $data = null,
+        mixed $data = null
     ): JsonResponse {
         return self::okJson(
             self::generatePayload($message, $data),
