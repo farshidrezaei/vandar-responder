@@ -8,15 +8,16 @@ use Symfony\Component\HttpFoundation\Response;
 
 class Responder
 {
+
     /**
      * for success responses call this function. every argument is optional, but please fill those.
      * @param  string|null  $message
-     * @param  mixed  $data
+     * @param  array|null  $data
      * @return JsonResponse
      */
     public static function success(
         ?string $message = null,
-        mixed $data = null
+        $data = null
     ): JsonResponse {
         return self::okJson(
             self::generatePayload($message, $data),
@@ -26,11 +27,11 @@ class Responder
     /**
      * for success Resource Collection responses call this function. every argument is optional, but please fill those.
      * @param  string|null  $message
-     * @param  mixed  $data
+     * @param  AnonymousResourceCollection  $data
      * @return AnonymousResourceCollection
      */
     public static function successResourceCollection(
-        ?string $message = null,
+        string $message = null,
         AnonymousResourceCollection $data
     ): AnonymousResourceCollection {
         return self::okResourceCollectionJson(
@@ -58,10 +59,10 @@ class Responder
 
     /**
      * @param  string|null  $message
-     * @param  array|null  $data
+     * @param  null  $data
      * @return array
      */
-    private static function generatePayload(?string $message = null, mixed $data = null): array
+    private static function generatePayload(?string $message = null, $data = null): array
     {
         $payload = [];
         if ($message) {
@@ -78,10 +79,15 @@ class Responder
      * @param  string  $stringErrorCode
      * @param  string|null  $message
      * @param  array|null  $errors
+     * @param  array|null  $data
      * @return array
      */
-    private static function generateFailurePayload(string $stringErrorCode, ?string $message = null, ?array $errors = null, ?array $data = null ): array
-    {
+    private static function generateFailurePayload(
+        string $stringErrorCode,
+        ?string $message = null,
+        ?array $errors = null,
+        ?array $data = null
+    ): array {
         $payload = [];
         if ($message) {
             $payload['message'] = $message;
@@ -104,6 +110,7 @@ class Responder
      * @param  string  $stringErrorCode
      * @param  string|null  $message
      * @param  array|null  $errors
+     * @param  array|null  $data
      * @return JsonResponse
      */
     public static function failure(
@@ -111,9 +118,9 @@ class Responder
         string $stringErrorCode,
         ?string $message = null,
         ?array $errors = [],
-        ?array $data = null
+        ?array $data = []
     ): JsonResponse {
-        return self::failJson($errorCode, self::generateFailurePayload($stringErrorCode, $message, $errors,$data));
+        return self::failJson($errorCode, self::generateFailurePayload($stringErrorCode, $message, $errors, $data));
     }
 
     /**

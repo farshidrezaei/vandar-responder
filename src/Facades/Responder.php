@@ -7,8 +7,8 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static JsonResponse success(null|string $message, mixed $data = null)
- * @method static AnonymousResourceCollection successResourceCollection(null|string $message, mixed $data = null)
+ * @method static JsonResponse success(null|string $message, $data = null)
+ * @method static AnonymousResourceCollection successResourceCollection(null|string $message, $data = null)
  * @method static JsonResponse failure(int $errorCode, string $stringErrorCode, null|string $message, null|array $errors = null, null|array $data = null)
  * @method static JsonResponse getStringError(string $stringErrorCode)
  *
