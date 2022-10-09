@@ -31,7 +31,7 @@ class Responder
      */
     public static function successResourceCollection(
         ?string $message = null,
-        AnonymousResourceCollection $data,
+        AnonymousResourceCollection $data
     ): AnonymousResourceCollection {
         return self::okResourceCollectionJson(
             self::generatePayload($message, $data),
