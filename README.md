@@ -38,8 +38,19 @@ __('responder::exceptions.validation')
 
 ## Usage
 
-Here's a quick example:
 
+
+### Signatures of methods:
+```php
+
+Responder::success(?string $message = null, mixed $data = null): Illuminate\Http\JsonResponse
+
+Responder::successResourceCollection(null|string $message = null, Illuminate\Http\Resources\Json\AnonymousResourceCollection $data) :lluminate\Http\Resources\Json\AnonymousResourceCollection
+
+Responder::failure(int $errorCode, string $stringErrorCode, null|string $message = null, array|null $errors = [], array|null $data = []): Illuminate\Http\JsonResponse
+```
+
+Here's a quick example:
 ```php
 use FarshidRezaei\VandarResponder\Services\Responder;
 
@@ -48,14 +59,16 @@ use FarshidRezaei\VandarResponder\Services\Responder;
             errorCode: Response::HTTP_INTERNAL_SERVER_ERROR,// 500
             stringErrorCode: config('responder.errors.INTERNAL_ERROR'),
             message: "Service isn't available now. try again later.",
+            data:['foo'=>'bar']
         );
 
 // php 7.4
  return Responder::failure(
             Response::HTTP_INTERNAL_SERVER_ERROR,// 500
             config('responder.errors.INTERNAL_ERROR'),
-            "Service isn't available now. try again later."
-                   );
+            "Service isn't available now. try again later.",
+            ['foo'=>'bar']
+        );
  ```
 
 and you will get bellow response:
@@ -63,7 +76,10 @@ and you will get bellow response:
 ```josn
 {
   "message": "Service isn't available now. try again later.",
-  "code": "internal_error"
+  "code": "internal_error",
+  "data": {
+        "foo":"bar"
+  }
 }
 ```
 

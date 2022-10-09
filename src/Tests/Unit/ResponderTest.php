@@ -99,4 +99,19 @@ class ResponderTest extends TestCaseWithData
         )->getData(true);
         $this->assertEquals($response, ['code'=>config('responder.errors.UNAUTHORIZED_ERROR')]);
     }
+
+    public function testResponseIsFailureWithData(): void
+    {
+        $data = ['foo' => 'bar'];
+
+        $response = Responder::failure(
+            errorCode: Response::HTTP_UNAUTHORIZED,
+            stringErrorCode: config('responder.errors.UNAUTHORIZED_ERROR'),
+            data: $data
+        )->getData(true);
+
+        $this->assertEquals($response, ['code' => config('responder.errors.UNAUTHORIZED_ERROR'), 'data' => $data]);
+    }
+
+
 }

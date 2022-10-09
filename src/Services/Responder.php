@@ -80,7 +80,7 @@ class Responder
      * @param  array|null  $errors
      * @return array
      */
-    private static function generateFailurePayload(string $stringErrorCode, ?string $message = null, ?array $errors = null): array
+    private static function generateFailurePayload(string $stringErrorCode, ?string $message = null, ?array $errors = null, ?array $data = null ): array
     {
         $payload = [];
         if ($message) {
@@ -91,6 +91,9 @@ class Responder
         }
         if ($errors) {
             $payload['errors'] = $errors;
+        }
+        if ($data) {
+            $payload['data'] = $data;
         }
         return $payload;
     }
@@ -107,9 +110,10 @@ class Responder
         int $errorCode,
         string $stringErrorCode,
         ?string $message = null,
-        ?array $errors = []
+        ?array $errors = [],
+        ?array $data = null
     ): JsonResponse {
-        return self::failJson($errorCode, self::generateFailurePayload($stringErrorCode, $message, $errors));
+        return self::failJson($errorCode, self::generateFailurePayload($stringErrorCode, $message, $errors,$data));
     }
 
     /**
