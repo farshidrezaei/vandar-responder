@@ -51,6 +51,24 @@ Responder::failure(int $errorCode, string $stringErrorCode, null|string $message
 ```
 
 Here's a quick example:
+
+
+
+#### You can use function added macro on response class:
+
+```php
+// php 8
+return response()->failure(
+            errorCode: Response::HTTP_INTERNAL_SERVER_ERROR,// 500
+            stringErrorCode: config('responder.errors.INTERNAL_ERROR'),
+            message: "Service isn't available now. try again later.",
+            data:['foo'=>'bar']
+        );
+ ```
+
+
+#### Or call function from facade directly:
+
 ```php
 use FarshidRezaei\VandarResponder\Services\Responder;
 
@@ -62,6 +80,7 @@ use FarshidRezaei\VandarResponder\Services\Responder;
             data:['foo'=>'bar']
         );
 
+
 // php 7.4
  return Responder::failure(
             Response::HTTP_INTERNAL_SERVER_ERROR,// 500
@@ -69,9 +88,10 @@ use FarshidRezaei\VandarResponder\Services\Responder;
             "Service isn't available now. try again later.",
             ['foo'=>'bar']
         );
+
  ```
 
-and you will get bellow response:
+And you will get bellow response:
 
 ```josn
 {
@@ -83,7 +103,7 @@ and you will get bellow response:
 }
 ```
 
-also you can use `responder()` helper function :
+#### Also you can use `responder()` helper function :
 
 ```php
 // php 8

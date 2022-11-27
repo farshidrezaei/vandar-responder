@@ -3,7 +3,10 @@
 namespace FarshidRezaei\VandarResponder\Providers;
 
 use FarshidRezaei\VandarResponder\Services\Responder;
+use FarshidRezaei\VandarResponder\Facades\Responder as ResponderFacade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Http\Response;
+use Illuminate\Routing\ResponseFactory;
 
 class ResponderServiceProvider extends ServiceProvider
 {
@@ -54,5 +57,17 @@ class ResponderServiceProvider extends ServiceProvider
                 __DIR__.'/../CustomExceptions' => $this->app->basePath('app/Responder/customExceptions'),
             ],'customExceptions');
         }
+
+
+        //macros 
+        ResponseFactory::macro('success', fn(string $message, array $data) => ResponderFacade::success($message, $data));
+        Response::macro('success', fn(string $message, array $data) => ResponderFacade::success($message, $data));
+
+        ResponseFactory::macro('failure', fn(int $errorCode, string $stringErrorCode, null|string $message, null|array $errors = null, null|array $data = null) => ResponderFacade::failure($errorCode,$stringErrorCode,$message,$errors, $data));
+        Response::macro('failure', fn(int $errorCode, string $stringErrorCode, null|string $message, null|array $errors = null, null|array $data = null) => ResponderFacade::failure($errorCode,$stringErrorCode,$message,$errors, $data));
+
+        ResponseFactory::macro('successResourceCollection', fn(null|string $message, mixed $data = null) => ResponderFacade::successResourceCollection($message, $data));
+        Response::macro('successResourceCollection', fn(null|string $message, mixed $data = null) => ResponderFacade::successResourceCollection($message, $data));
+
     }
 }
