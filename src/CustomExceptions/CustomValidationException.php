@@ -17,7 +17,7 @@ class CustomValidationException extends AbstractApiCustomException implements Ap
 
         $this->stringErrorCode = config('responder.errors.VALIDATION_ERROR');
 
-        $this->errorMessage = __('responder.exception.validation');
+        $this->errorMessage = __('responder::exceptions.validation');
 
         $this->errors = collect($exception->errors())->map(fn($error)=> $error[0] )->filter()->toArray();
 

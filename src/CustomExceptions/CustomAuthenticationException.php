@@ -16,7 +16,7 @@ class CustomAuthenticationException extends AbstractApiCustomException implement
 
         $this->stringErrorCode = config('responder.errors.UNAUTHENTICATED_ERROR');
 
-        $this->errorMessage = __('global_exceptions.unauthenticated');
+        $this->errorMessage = __('responder::exceptions.unauthenticated');
 
         parent::__construct();
     }

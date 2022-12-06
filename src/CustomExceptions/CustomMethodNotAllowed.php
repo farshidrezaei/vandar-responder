@@ -15,7 +15,7 @@ class CustomMethodNotAllowed extends AbstractApiCustomException implements ApiCu
 
         $this->stringErrorCode = config('responder.errors.METHOD_NOT_ALLOWED');
 
-        $this->errorMessage = __('global_exceptions.methodNotAllowed');
+        $this->errorMessage = __('responder::exceptions.methodNotAllowed');
 
         parent::__construct();
     }

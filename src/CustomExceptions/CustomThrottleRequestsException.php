@@ -16,7 +16,7 @@ class CustomThrottleRequestsException extends AbstractApiCustomException impleme
 
         $this->stringErrorCode = config('responder.errors.TOO_MANY_REQUESTS_ERROR');
 
-        $this->errorMessage = __('global_exceptions.throttleRequests');
+        $this->errorMessage = __('responder::exceptions.throttleRequests');
 
         parent::__construct();
     }

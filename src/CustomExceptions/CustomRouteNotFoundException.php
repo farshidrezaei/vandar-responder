@@ -15,7 +15,7 @@ class CustomRouteNotFoundException extends AbstractApiCustomException implements
 
         $this->stringErrorCode = config('responder.errors.NOT_FOUND_ERROR');
 
-        $this->errorMessage = __('global_exceptions.modelNotFound');
+        $this->errorMessage = __('responder::exceptions.modelNotFound');
 
         parent::__construct();
     }

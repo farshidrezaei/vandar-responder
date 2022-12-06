@@ -16,7 +16,7 @@ class CustomUnauthorizedException extends AbstractApiCustomException implements 
 
         $this->stringErrorCode = config('responder.errors.UNAUTHORIZED_ERROR');
 
-        $this->errorMessage = __('global_exceptions.unauthorized');
+        $this->errorMessage = __('responder::exceptions.unauthorized');
 
         parent::__construct();
     }
