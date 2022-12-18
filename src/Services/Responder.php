@@ -49,7 +49,7 @@ class Responder
         return  [
             'message' => $message,
             'data'=> $data,
-            'code'=> $stringErrorCode
+            'code'=> $stringErrorCode,
             'errors'=> $errors,
         ];
     }
