@@ -60,14 +60,14 @@ class ResponderServiceProvider extends ServiceProvider
 
 
         //macros 
-        ResponseFactory::macro('success', fn(string $message, array $data) => ResponderFacade::success($message, $data));
-        Response::macro('success', fn(string $message, array $data) => ResponderFacade::success($message, $data));
+        ResponseFactory::macro('success', fn(string $message, array $data=[]) => ResponderFacade::success($message, $data));
+        Response::macro('success', fn(string $message, array $data=[]) => ResponderFacade::success($message, $data));
 
-        ResponseFactory::macro('failure', fn(int $errorCode, string $stringErrorCode, null|string $message, null|array $errors = null, null|array $data = null) => ResponderFacade::failure($errorCode,$stringErrorCode,$message,$errors, $data));
-        Response::macro('failure', fn(int $errorCode, string $stringErrorCode, null|string $message, null|array $errors = null, null|array $data = null) => ResponderFacade::failure($errorCode,$stringErrorCode,$message,$errors, $data));
+        ResponseFactory::macro('failure', fn(int $errorCode, string $stringErrorCode, null|string $message, null|array $errors = null, null|array $data = []) => ResponderFacade::failure($errorCode,$stringErrorCode,$message,$errors, $data));
+        Response::macro('failure', fn(int $errorCode, string $stringErrorCode, null|string $message, null|array $errors = null, null|array $data = []) => ResponderFacade::failure($errorCode,$stringErrorCode,$message,$errors, $data));
 
-        ResponseFactory::macro('successResourceCollection', fn(null|string $message, mixed $data = null) => ResponderFacade::successResourceCollection($message, $data));
-        Response::macro('successResourceCollection', fn(null|string $message, mixed $data = null) => ResponderFacade::successResourceCollection($message, $data));
+        ResponseFactory::macro('successResourceCollection', fn(null|string $message, mixed $data) => ResponderFacade::successResourceCollection($message, $data));
+        Response::macro('successResourceCollection', fn(null|string $message, mixed $data) => ResponderFacade::successResourceCollection($message, $data));
 
     }
 }

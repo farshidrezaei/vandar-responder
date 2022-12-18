@@ -19,7 +19,7 @@ class CustomValidationException extends AbstractApiCustomException implements Ap
 
         $this->errorMessage = __('responder::exceptions.validation');
 
-        $this->errors = collect($exception->errors())->map(fn($error)=> $error[0] )->filter()->toArray();
+        $this->errors = collect($exception->validator->errors())->map(fn($error)=> $error[0] )->filter()->toArray();
 
         parent::__construct();
     }
