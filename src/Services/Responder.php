@@ -67,7 +67,7 @@ class Responder
         if ($message) {
             $payload['message'] = $message;
         }
-        if ($data) {
+        if ($data !== null) {
             $payload['data'] = $data;
         }
         return $payload;
@@ -92,7 +92,7 @@ class Responder
         if ($errors) {
             $payload['errors'] = $errors;
         }
-        if ($data) {
+        if ($data!==null) {
             $payload['data'] = $data;
         }
         return $payload;
