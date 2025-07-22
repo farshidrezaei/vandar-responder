@@ -24,7 +24,7 @@ class Responder
 
     private static function okJson(array $payload): JsonResponse
     {
-        return response()->json($payload, Response::HTTP_OK);
+        return response()->json($payload, Response::HTTP_OK, options: JSON_UNESCAPED_UNICODE);
     }
 
 
@@ -70,7 +70,7 @@ class Responder
 
     private static function failJson(int $errorCode, array $payload): JsonResponse
     {
-        return response()->json($payload, $errorCode);
+        return response()->json($payload, $errorCode, options: JSON_UNESCAPED_UNICODE);
     }
 
     public static function getStringError(string $error): string
